@@ -26,8 +26,8 @@ public class ilstview extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,data);
         list.setAdapter(adapter);
 
-        data.add("장수풍뎅이");
-        data.add("왕사슴벌레");
+        data.add("장수풍뎅이ㅇㅇ");
+        data.add("코드 수정 업데이트");
         data.add("헤라클레스 장수풍뎅이");
         adapter.notifyDataSetChanged();
 
