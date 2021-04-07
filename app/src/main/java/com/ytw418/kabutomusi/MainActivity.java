@@ -3,6 +3,7 @@ package com.ytw418.kabutomusi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +14,20 @@ public class MainActivity extends AppCompatActivity {
     EditText id_id;
     Button btn_id;
     private Button list_btn;
+    EditText et_save;
+    String shared = "file";
 
+
+    @Override//종료시 값 저장
+    protected void onDestroy() {
+        super.onDestroy();
+        SharedPreferences sharedPreferences = getSharedPreferences(shared,0);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        String value = et_save.getText().toString();
+        editor.putString("hong",value);
+        editor.commit();
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +55,13 @@ public class MainActivity extends AppCompatActivity {
              id_id.setText("완료");
          }
         });
+
+        et_save = (EditText)findViewById(R.id.et_save);
+        //재 시작시 저장된 값 불러오기
+        SharedPreferences sharedPreferences = getSharedPreferences(shared,0);
+        String value = sharedPreferences.getString("hong","");
+        et_save.setText(value);
+
 
 
 
